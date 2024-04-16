@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export interface IUser {
     firstName: string;
     lastName: string;
@@ -20,9 +22,11 @@ export enum ETableHeaderType {
 export interface ITableHeader {
     key: string;
     label: string;
-    type: ETableHeaderType;
+    type?: ETableHeaderType;
     sortable?: boolean;
     style?: React.CSSProperties;
+    hidden?: boolean;
+    render?: (value: string, row?: Record<string, ReactNode>) => ReactNode;
 }
 
 export interface ISort {
@@ -40,4 +44,15 @@ export type TUserForm = {
     id?: number;
     password: string;
     confirmPassword: string;
+}
+
+export type TGroups = {
+    name: string;
+    id: string;
+    members: {
+        id: string;
+        firstname: string;
+        lastname: string;
+        role: string;
+    }[];
 }

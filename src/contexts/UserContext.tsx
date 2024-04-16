@@ -26,7 +26,7 @@ const demo = [
         role: "HELPER",
         id: 22
     }
-]
+];
 
 interface UserContextProps {
     users: IUser[];
@@ -61,6 +61,8 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
         setUsers((prev) => prev.filter(el => el.id !== id));
     }
 
+    
+
     const contextValue: UserContextProps = {
         users,
         addUser,
@@ -84,26 +86,3 @@ export const useUser = () => {
         return context;
     }
 }
-
-// export const usePost = () => {
-//     const [sort, setSort] = useState<ISort | null>(null)
-
-//      useMemo((): Record<
-//         string,
-//         (JSX.Element | string)[] | string
-//     >[] => {
-
-//         if (sort !== null)
-//             console.log(sort);
-//         demo.sort((a, b) => {
-//             const key = sort?.key as keyof IUser;
-//             if (sort?.sort === SortOption.DESC) {
-//                 return a[key].toString().localeCompare(b[key].toString())
-//             }
-//             return b[key].toString().localeCompare(a[key].toString())
-//         })
-//     }, [sort])
-//     return {
-//         setSort
-//     }
-// }

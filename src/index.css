@@ -202,3 +202,27 @@ form{
   font-size: 14px;
   margin: 0;
 }
+
+.render_constants{
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center
+}
+
+.render_constants span{
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+.tech{
+  color: rgb(16, 57, 150);
+  background-color: rgba(32, 101, 209, 0.16);
+}
+
+.helper{
+  color: rgb(183, 129, 3);
+  background-color: rgba(255, 193, 7, 0.16);
+}

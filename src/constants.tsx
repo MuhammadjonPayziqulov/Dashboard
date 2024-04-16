@@ -34,3 +34,38 @@ export const USERS_TABLE_HEADS: ITableHeader[] = [
         sortable: false
     },
 ]
+
+export const GROUPS_TABLE_HEADS: ITableHeader[] = [
+    {
+        key: "group_name",
+        label: "Group Name",
+        type: ETableHeaderType.Text,
+    },
+    {
+        key: "members",
+        label: "Members",
+        render: (value) => {            
+            const [techs, helpers] = value.split("<>");
+            return (
+                <span className="render_constants">
+                    {techs.split("&").map((el,i) => 
+                        <span key={i} className="tech">
+                           Tech: {el}
+                        </span>
+                    )}    
+                    {helpers.split("&").map((el,i) => 
+                        <span key={i} className="helper">
+                            {el}
+                        </span>
+                    )} 
+                </span>
+            )
+        }
+    },
+    {
+        key: "action",
+        label: "Action",
+        type: ETableHeaderType.Text,
+        sortable: false
+    }
+]

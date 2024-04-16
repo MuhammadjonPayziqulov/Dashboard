@@ -15,8 +15,7 @@ export const CustomTable: React.FC<IProps> = ({ heads, rows, onConfirm, onEdit }
       <thead>
         <tr>
           {heads.map((head) => (
-            <th key={head.key}
-            >
+            <th key={head.key}            >
               {head.label}
             </th>
           ))}
@@ -24,8 +23,15 @@ export const CustomTable: React.FC<IProps> = ({ heads, rows, onConfirm, onEdit }
       </thead>
       <tbody>
         {rows.map((row, index) => (
-          <tr key={index}>
-            {heads.map((head) => {
+          <tr key={index} style={{verticalAlign:"baseline"}}>
+            {heads.map((head, i) => {
+              if (head.hidden) return null;              
+              if(head.render != null) 
+              return (
+                <td key={i}>
+                  {head.render(row[head.key] as string, row)}
+                </td>  
+              )
               if (head.key === "action") {
                 return (
                   <td key={head.key} className="list_btns">
